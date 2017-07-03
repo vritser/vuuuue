@@ -1,5 +1,42 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
 <body>
-Hello World
+  <script>
+    let b = document.body.appendChild.bind(document.body),
+      a = Object.assign.bind(Object),
+      c = document.createElement.bind(document)
+    b(a(c('link'), { rel: 'stylesheet', type: 'text/css', href: 'https://unpkg.com/codemirror/lib/codemirror.css' }))
+    b(a(c('script'), {
+      src: 'https://unpkg.com/requirejs/require.js',
+      onload() {
+        let r = window.require
+        r.config({
+          paths: {
+            'codemirror/lib': 'https://unpkg.com/codemirror/lib',
+            'codemirror/mode': 'https://unpkg.com/codemirror/mode'
+          }
+        })
+        let d = b(a(c('textarea'), { height: '500px' }))
+        let e = b(a(c('button'), {
+          innerText: 'Run',
+          onclick() {
+            eval(window.editor.getValue())
+          }
+        }))
+        r(['codemirror/lib/codemirror', 'codemirror/mode/javascript/javascript'], CM =>
+          editor = CM.fromTextArea(d, { mode: 'javascript', lineNumbers: true })
+        )
+      }
+    }))
+  </script>
 </body>
+
 </html>
