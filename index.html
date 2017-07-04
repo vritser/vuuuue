@@ -26,10 +26,13 @@
           }
         })
         let d = b(a(c('textarea'), { height: '500px' }))
+        let result = b(a(c('textarea'), { style: 'height:300px;width:1413px' }))
+        console.log(result)
         let e = b(a(c('button'), {
           innerText: 'Run',
+          width: '50px',
           onclick() {
-            eval(window.editor.getValue())
+            result.value = eval(window.editor.getValue())
           }
         }))
         r(['codemirror/lib/codemirror', 'codemirror/mode/javascript/javascript'], CM => {
