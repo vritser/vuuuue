@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="a" contenteditable="true">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <button id="b">click</button>
+  </ul>
+  <script>
+    const log = console.log
+    let ul = a.getElementsByTagName('li')
+    b.addEventListener('click', _ => alert([].map.call(ul, x => x.innerText).join('\n')))
+  </script>
+</body>
+
+</html>
